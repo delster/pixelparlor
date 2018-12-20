@@ -7,6 +7,8 @@ tags:
   - blog
   - test
 ---
+![](/img/apple-touch-icon.png)
+
 # This is an h1
 
 This is a paragraph
