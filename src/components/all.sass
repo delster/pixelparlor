@@ -1,13 +1,10 @@
-@import "~bulma/sass/utilities/initial-variables"
-
-// Config vars
-// Kalidi logo brand color: #FD461E
-$kaldi-red: #D64000
-$kaldi-red-invert: #fff
-
-$primary: $kaldi-red
-$primary-invert: $kaldi-red-invert
-$body-color: #333
+$primary-color: color("materialize-red", "lighten-2") !default;
+$primary-color-light: false !default;
+$primary-color-dark: false !default;
+$secondary-color: color("teal", "lighten-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+$link-color: color("light-blue", "darken-1") !default;
 
 .navbar .navbar-menu
   box-shadow:none !important
@@ -43,5 +40,3 @@ $body-color: #333
 
 .margin-top-0
   margin-top: 0 !important
-
-@import "~bulma"
