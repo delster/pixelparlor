@@ -1,7 +1,6 @@
 ---
-templateKey: 'product-page'
-path: /products
-title: Our Coffee
+templateKey: product-page
+title: This is my favorite JavaScript-based CMS!
 image: /img/jumbotron.jpg
 heading: What we offer
 description: >-
@@ -11,6 +10,9 @@ description: >-
   anyone.
 intro:
   blurbs:
+    - image: /img/coffee-gear.png
+      text: |
+        This is that text. I'm live editing it.
     - image: /img/coffee.png
       text: >
         We sell green and roasted coffee beans that are sourced directly from
@@ -18,12 +20,6 @@ intro:
         variety of coffee beans grown with great care for the environment and
         local communities. Check our post or contact us directly for current
         availability.
-    - image: /img/coffee-gear.png
-      text: >
-        We offer a small, but carefully curated selection of brewing gear and
-        tools for every taste and experience level. No matter if you roast your
-        own beans or just bought your first french press, you’ll find a gadget
-        to fall in love with in our shop.
     - image: /img/tutorials.png
       text: >
         Love a great cup of coffee, but never knew how to make one? Bought a
@@ -38,6 +34,10 @@ intro:
         space where you can hang out with fellow coffee lovers and learn about
         coffee making techniques. All of the artwork on display there is for
         sale. The full price you pay goes to the artist.
+    - {}
+    - {}
+    - {}
+    - {}
   heading: What we offer
   description: >
     Kaldi is the ultimate spot for coffee lovers who want to learn about their
@@ -47,10 +47,10 @@ intro:
 main:
   heading: Great coffee with no compromises
   description: >
-    We hold our coffee to the highest standards from the shrub to the cup.
-    That’s why we’re meticulous and transparent about each step of the coffee’s
-    journey. We personally visit each farm to make sure the conditions are
-    optimal for the plants, farmers and the local environment.
+    We hold our coffee to the highest stsojndasnjodksaandards from the shrub to
+    the cup. That’s why we’re meticulous and transparent about each step of the
+    coffee’s journey. We personally visit each farm to make sure the conditions
+    are optimal for the plants, farmers and the local environment.
   image1:
     alt: A close-up of a paper filter filled with ground coffee
     image: /img/products-grid3.jpg
@@ -99,3 +99,4 @@ pricing:
       plan: Custom
       price: '??'
 ---
+
