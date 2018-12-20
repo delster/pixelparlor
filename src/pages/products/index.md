@@ -1,6 +1,6 @@
 ---
 templateKey: product-page
-title: Our Coffee
+title: This is my favorite JavaScript-based CMS!
 image: /img/jumbotron.jpg
 heading: What we offer
 description: >-
