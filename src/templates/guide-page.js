@@ -8,20 +8,28 @@ export const GuidePageTemplate = ({ title, content, contentComponent }) => {
   const PageContent = contentComponent || Content
 
   return (
-    <section className="section">
-      <div className="container">
-        <div className="row">
-          <div className="col s12 m4 l3">
-            <h2 className="toc-heading">Table of Contents</h2>
-            <p>AUTOMAGICALLY POPULATE THIS WITH ToC</p>
-          </div>
-          <div class="col s12 m8 l9">
-            <h1 className="page-heading">{title}</h1>
-            <PageContent className="content" content={content} />
+    <main id="main-content" className="main-content">
+      <section className="section section--hero">
+        <div className="container center-align">
+          <h1>Website User Manual</h1>
+          <div className="byline">{title}</div>
+        </div>
+      </section>
+      <section className="section--content">
+        <div className="container">
+          <div className="row">
+            <div className="col s12 m4 l3">
+              <h2 className="toc-heading">Table of Contents</h2>
+              <p>AUTOMAGICALLY POPULATE THIS WITH ToC</p>
+            </div>
+            <div class="col s12 m8 l9">
+              <h1 className="page-heading">{title}</h1>
+              <PageContent className="content" content={content} />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </main>
   )
 }
 

@@ -1,6 +1,6 @@
 ---
 templateKey: 'guide-page'
-path: /guide-sample
+path: /guide
 title: Guide to Foobar
 ---
 ### Shade-grown coffee
