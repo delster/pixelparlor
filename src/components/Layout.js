@@ -1,17 +1,22 @@
 import React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from "gatsby"
-import WebFont from 'webfontloader';
 import 'materialize-css/dist/css/materialize.min.css'
 
 import Navbar from '../components/Navbar'
 import './all.sass'
 
-WebFont.load({
-  google: {
-    families: ['Montserrat', 'Material+Icons']
-  }
-})
+// Only run WebFont.load in the browser.
+if (typeof window !== 'undefined') {
+  var WebFont = require('webfontloader');
+
+  WebFont.load({
+    google: {
+      families: ['Montserrat', 'Material+Icons']
+    }
+  })
+
+}
 
 const TemplateWrapper = ({ children }) => (
   <StaticQuery
