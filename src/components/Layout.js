@@ -15,7 +15,6 @@ if (typeof window !== 'undefined') {
       families: ['Montserrat', 'Material+Icons']
     }
   })
-
 }
 
 const TemplateWrapper = ({ children }) => (
@@ -50,7 +49,7 @@ const TemplateWrapper = ({ children }) => (
           <meta property="og:image" content="/img/og-image.jpg" />
         </Helmet>
         <Navbar />
-        <div>{children}</div>
+        {children}
       </div>
     )}
   />
