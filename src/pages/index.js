@@ -8,8 +8,6 @@ export default class IndexPage extends React.Component {
     const { data } = this.props;
     const { edges: guides } = data.allMarkdownRemark;
 
-    guides.map( guide => console.log(guide.node.frontmatter.templateKey) );
-
     return (
       <Layout>
         <section className="section">
