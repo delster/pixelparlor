@@ -9,7 +9,7 @@ import './all.sass'
 
 WebFont.load({
   google: {
-    families: ['Material+Icons']
+    families: ['Montserrat', 'Material+Icons']
   }
 })
 

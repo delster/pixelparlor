@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import logo from '../img/logo.svg'
+import logo from '../img/logo--pxp.svg'
 
 const Navbar = class extends React.Component {
 
@@ -29,19 +29,15 @@ const Navbar = class extends React.Component {
 
   render() {
     return (
-      <nav role="navigation" aria-label="main-navigation">
+      <nav id="main-navigation" role="navigation" aria-label="main-navigation">
         <div className="nav-wrapper">
           <div className="container">
             <Link to="/" className="brand-logo" title="Logo">
-              <img src={logo} alt="Pixel Parlor" style={{ width: '88px' }} />
+              <img src={logo} alt="Pixel Parlor" style={{ width: '30px' }} />
             </Link>
 
             <ul id="nav-mobile" className="right hide-on-med-and-down">
-              <li><Link className="navbar-item" to="/about">About</Link></li>
               <li><Link className="navbar-item" to="/guide">Example Guide Page</Link></li>
-              <li><Link className="navbar-item" to="/products">Products</Link></li>
-              <li><Link className="navbar-item" to="/contact">Contact</Link></li>
-              <li><Link className="navbar-item" to="/contact/examples">Form Examples</Link></li>
               <li>
                 <a
                   className="navbar-item"

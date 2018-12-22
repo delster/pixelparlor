@@ -12,7 +12,7 @@ export const GuidePageTemplate = ({ title, content, contentComponent }) => {
       <section className="section section--hero">
         <div className="container center-align">
           <h1>Website User Manual</h1>
-          <div className="byline">{title}</div>
+          <span className="hero-byline">{title}</span>
         </div>
       </section>
       <section className="section--content">
@@ -23,7 +23,6 @@ export const GuidePageTemplate = ({ title, content, contentComponent }) => {
               <p>AUTOMAGICALLY POPULATE THIS WITH ToC</p>
             </div>
             <div class="col s12 m8 l9">
-              <h1 className="page-heading">{title}</h1>
               <PageContent className="content" content={content} />
             </div>
           </div>

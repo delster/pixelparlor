@@ -1,42 +1,62 @@
-$primary-color: color("materialize-red", "lighten-2") !default;
-$primary-color-light: false !default;
-$primary-color-dark: false !default;
-$secondary-color: color("teal", "lighten-1") !default;
-$success-color: color("green", "base") !default;
-$error-color: color("red", "base") !default;
-$link-color: color("light-blue", "darken-1") !default;
+/* Variables
+  ************************************/
+$primary-color: #008ef3
 
-.navbar .navbar-menu
-  box-shadow:none !important
-
-.content .taglist
-  list-style: none
+/* Global Typography
+  ************************************/
+h1
+  color: white
+  font-size: 60px
+  line-height: 1.4
   margin-bottom: 0
-  margin-left: 0
-  margin-right: 1.5rem
-  margin-top: 1.5rem
-  display: flex
-  flex-wrap: wrap
-  justify-content: left
-  align-items: center
-  li
-    padding: 0 2rem 1rem 0
-    margin-bottom: 1.5rem
-    margin-top: 0
+  text-align: center
 
-// Helper Classes
-.full-width-image-container
-  width: 100vw
-  height: 400px
-  position: relative
-  left: 50%
-  right: 50%
-  margin: 5em -50vw
-  background-size: cover
-  background-position: bottom
-  display: flex
-  justify-content: center
-  align-items: center
+h2
+  font-size: 50px
+  line-height: 53px
+  padding-bottom: .5em
 
-.margin-top-0
-  margin-top: 0 !important
+h3
+  font-size: 32px
+  line-height: 36px
+
+h4
+  color: #242424
+  font-size: 22px
+  line-height: 26px
+
+h5
+  font-size: 60px
+  line-height: 1.4
+
+h6
+  font-size: 60px
+  line-height: 1.4
+
+
+h1,h2,h3,h4,h5,h6
+  font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif
+  font-weight: 700
+
+h2,h3,h5,h6
+  color: $primary-color
+
+/* Global Layout
+  ************************************/
+.section
+  padding-top: 4rem
+  padding-bottom: 6rem
+
+/* Main Header
+  ************************************/
+#main-navigation
+  background-color: $primary-color
+
+/* Guide Page: Hero Section
+  ************************************/
+.section--hero
+  background-color: $primary-color
+  .hero-byline
+    color: white
+    font-size: 22px
+    text-align: center
