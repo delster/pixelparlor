@@ -12093,6 +12093,11 @@ react-side-effect@^1.1.0:
     exenv "^1.2.1"
     shallowequal "^1.0.1"
 
+react-slugify@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/react-slugify/-/react-slugify-1.1.1.tgz#9a49ed8b41a8249212dbb41d204f4fda7cb8b2dc"
+  integrity sha512-PBLmwMQbl4AqWHTyCsjoj1fUG4cpi4SDxb0hPg7P2ShVai679ibmhthlbmS/44Blic/Sgh2W7siSqDTFDzAmyg==
+
 react-sortable-hoc@^0.6.8:
   version "0.6.8"
   resolved "https://registry.yarnpkg.com/react-sortable-hoc/-/react-sortable-hoc-0.6.8.tgz#b08562f570d7c41f6e393fca52879d2ebb9118e9"

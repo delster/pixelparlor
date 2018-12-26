@@ -12,7 +12,7 @@ if (typeof window !== 'undefined') {
 
   WebFont.load({
     google: {
-      families: ['Montserrat', 'Material+Icons']
+      families: ['Montserrat:400,700', 'Material+Icons']
     }
   })
 }
