@@ -10,49 +10,59 @@ export class GuidePageTemplate extends Component {
   constructor(props) {
     super(props)
 
-    // Build Table of Contents
-    const cmsContent = new DOMParser().parseFromString(this.props.content, "text/html")
-    const headings = cmsContent.querySelectorAll('h2,h3')
+    if (typeof window !== 'undefined') {
+      // Build Table of Contents
+      const DOMParser = require('xmldom').DOMParser;
+      const cmsContent = new DOMParser().parseFromString(this.props.content, "text/html")
 
-    let tableOfContents = `<ul class="toc-nav">`
-    let isNested = false
-    headings.forEach((e, _) => {
-      // Mutate headings: add slugify'd IDs and 'scrollspy' class.
-      e.id = slugify(e.textContent)
-      e.classList.add('scrollspy')
+      let parsedCMSContent = document.createElement('html');
+      parsedCMSContent.innerHTML = cmsContent
+      const headings = parsedCMSContent.querySelectorAll('h2,h3')
 
-      // Add opening tags for this element to the Table of Contents.
-      let preItem = ``
-      let tocItem = `<a href="#${slugify(e.textContent)}">${e.textContent}</a>`
+      let tableOfContents = `<ul class="toc-nav">`
+      let isNested = false
+      headings.forEach((e, _) => {
+        if (e === null) return;
 
-      // If not nested:
-      if (isNested) {
-        // isNested
-        if (e.tagName === 'H2') {
-          // Nested H2
-          isNested = false
-          preItem = `</li></ul><li>`
-        } else if (e.tagName === 'H3') {
-          // Nested H3
-          preItem = `</li><li>`
-        }
-      } else {
-        // !isNested
-        if (e.tagName === 'H2') {
-          // Non-nested H2
-          preItem = `</li><li>`
-        } else if (e.tagName === 'H3') {
-          // Non-nested H3
-          preItem = `<ul><li>`
-          isNested = true
-        }
-      } // if(isNested)
-      tableOfContents = `${tableOfContents}
-          ${preItem}${tocItem}`
-    }) // headings.forEach()
-    tableOfContents = `${tableOfContents}</ul>`
+        // Mutate headings: add slugify'd IDs and 'scrollspy' class.
+        e.id = slugify(e.textContent)
+        e.classList.add('scrollspy')
 
-    this.state = {tableofcontents: tableOfContents}
+        // Add opening tags for this element to the Table of Contents.
+        let preItem = ``
+        let tocItem = `<a href="#${slugify(e.textContent)}">${e.textContent}</a>`
+
+        // If not nested:
+        if (isNested) {
+          // isNested
+          if (e.tagName === 'H2') {
+            // Nested H2
+            isNested = false
+            preItem = `</li></ul><li>`
+          } else if (e.tagName === 'H3') {
+            // Nested H3
+            preItem = `</li><li>`
+          }
+        } else {
+          // !isNested
+          if (e.tagName === 'H2') {
+            // Non-nested H2
+            preItem = `</li><li>`
+          } else if (e.tagName === 'H3') {
+            // Non-nested H3
+            preItem = `<ul><li>`
+            isNested = true
+          }
+        } // if(isNested)
+        tableOfContents = `${tableOfContents}
+            ${preItem}${tocItem}`
+      }) // headings.forEach()
+      tableOfContents = `${tableOfContents}</ul>`
+
+      this.state = {tableofcontents: tableOfContents}
+  } else {
+    this.state = {tableofcontents: null}
+  }
   }
 
   componentDidMount() {
@@ -80,7 +90,7 @@ export class GuidePageTemplate extends Component {
     // Hide Table of Contents column if empty.
     let tocClass = ``
     let contentClass = ``
-    if (this.state.tableofcontents.length) {
+    if (null!==this.state.tableofcontents) {
       tocClass = `col s12 m4 l3`
       contentClass = `col s12 m8 l9`
     } else {
