@@ -7,49 +7,56 @@ import Content, { HTMLContent } from '../components/Content'
 import M from 'materialize-css'
 
 export class GuidePageTemplate extends Component {
+  constructor(props) {
+    super(props)
+
+    // Build Table of Contents
+    const cmsContent = new DOMParser().parseFromString(this.props.content, "text/html")
+    const headings = cmsContent.querySelectorAll('h2,h3')
+
+    let tableOfContents = `<ul class="toc-nav">`
+    let isNested = false
+    headings.forEach((e, _) => {
+      // Mutate headings: add slugify'd IDs and 'scrollspy' class.
+      e.id = slugify(e.textContent)
+      e.classList.add('scrollspy')
+
+      // Add opening tags for this element to the Table of Contents.
+      let preItem = ``
+      let tocItem = `<a href="#${slugify(e.textContent)}">${e.textContent}</a>`
+
+      // If not nested:
+      if (isNested) {
+        // isNested
+        if (e.tagName === 'H2') {
+          // Nested H2
+          isNested = false
+          preItem = `</li></ul><li>`
+        } else if (e.tagName === 'H3') {
+          // Nested H3
+          preItem = `</li><li>`
+        }
+      } else {
+        // !isNested
+        if (e.tagName === 'H2') {
+          // Non-nested H2
+          preItem = `</li><li>`
+        } else if (e.tagName === 'H3') {
+          // Non-nested H3
+          preItem = `<ul><li>`
+          isNested = true
+        }
+      } // if(isNested)
+      tableOfContents = `${tableOfContents}
+          ${preItem}${tocItem}`
+    }) // headings.forEach()
+    tableOfContents = `${tableOfContents}</ul>`
+
+    this.state = {tableofcontents: tableOfContents}
+  }
+
   componentDidMount() {
     if (document.querySelector('.toc-wrapper') !== null) {
-      const headings = document.querySelectorAll('.content h2,.content h3')
-
-      let tableOfContents = `<ul class="toc-nav">`
-      let isNested = false
-      headings.forEach((e, _) => {
-        // Mutate headings: add slugify'd IDs and 'scrollspy' class.
-        e.id = slugify(e.textContent)
-        e.classList.add('scrollspy')
-
-        // Add opening tags for this element to the Table of Contents.
-        let preItem = ``
-        let tocItem = `<a href="#${slugify(e.textContent)}">${e.textContent}</a>`
-
-        // If not nested:
-        if (isNested) {
-          // isNested
-          if (e.tagName === 'H2') {
-            // Nested H2
-            isNested = false
-            preItem = `</li></ul><li>`
-          } else if (e.tagName === 'H3') {
-            // Nested H3
-            preItem = `</li><li>`
-          }
-        } else {
-          // !isNested
-          if (e.tagName === 'H2') {
-            // Non-nested H2
-            preItem = `</li><li>`
-          } else if (e.tagName === 'H3') {
-            // Non-nested H3
-            preItem = `<ul><li>`
-            isNested = true
-          }
-        } // if(isNested)
-        tableOfContents = `${tableOfContents}
-          ${preItem}${tocItem}`
-      }) // headings.forEach()
-      tableOfContents = `${tableOfContents}</ul>`
-      document.querySelector('.toc-wrapper').innerHTML = tableOfContents
-
       // Scrollspy Elements (Nav Items)
       const ssElems = document.querySelectorAll('.scrollspy')
       const ssOptions = {}
@@ -57,7 +64,9 @@ export class GuidePageTemplate extends Component {
 
       // Pushpin/sticky Element (Table of Contents)
       const ppElem = document.querySelector('.toc-nav')
-      const top = ppElem.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop)
+      const top = (ppElem !== null)
+        ? ppElem.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop)
+        : 0
       const ppOptions = { top: top }
       M.Pushpin.init(ppElem, ppOptions)
     } // if( '.toc-wrapper' )
@@ -67,13 +76,11 @@ export class GuidePageTemplate extends Component {
   render() {
     const { title, content, contentComponent } = this.props
     const PageContent = contentComponent || Content
-    const hasTOC = ((typeof document !== `undefined`)&&(document.querySelector('.toc-wrapper') !== null))
 
+    // Hide Table of Contents column if empty.
     let tocClass = ``
     let contentClass = ``
-
-    // Editor fix
-    if(hasTOC) {
+    if (this.state.tableofcontents.length) {
       tocClass = `col s12 m4 l3`
       contentClass = `col s12 m8 l9`
     } else {
@@ -93,7 +100,7 @@ export class GuidePageTemplate extends Component {
           <div className="container">
             <div className="row">
               <div className={tocClass}>
-                <div className="toc-wrapper" />
+                <div className="toc-wrapper" dangerouslySetInnerHTML={{__html: this.state.tableofcontents}} />
               </div>
               <div className={contentClass}>
                 <PageContent className="content" content={content} />
