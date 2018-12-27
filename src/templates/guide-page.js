@@ -24,10 +24,6 @@ export class GuidePageTemplate extends Component {
       headings.forEach((e, _) => {
         if (e === null) return;
 
-        // Mutate headings: add slugify'd IDs and 'scrollspy' class.
-        e.id = slugify(e.textContent)
-        e.classList.add('scrollspy')
-
         // Add opening tags for this element to the Table of Contents.
         let preItem = ``
         let tocItem = `<a href="#${slugify(e.textContent)}">${e.textContent}</a>`
@@ -68,8 +64,15 @@ export class GuidePageTemplate extends Component {
   componentDidMount() {
     if (document.querySelector('.toc-wrapper') !== null) {
       // Scrollspy Elements (Nav Items)
-      const ssElems = document.querySelectorAll('.scrollspy')
-      const ssOptions = {}
+      const ssElems = document.querySelectorAll('.content h2, .content h3')
+      // Mutate headings: add slugify'd IDs and 'scrollspy' class.
+      for(let e of ssElems) {
+        e.id = slugify(e.textContent)
+        e.classList.add('scrollspy')
+      }
+      // Scrollspy Options
+      const ssOptions = {throttle:10}
+      // Init Scrollspy
       M.ScrollSpy.init(ssElems, ssOptions)
 
       // Pushpin/sticky Element (Table of Contents)
