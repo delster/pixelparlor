@@ -49,9 +49,9 @@ export class GuidePageTemplate extends Component {
     }); // headings.forEach()
     tableOfContents = `${tableOfContents}</ul>`
 
-    document.querySelector('.toc-wrapper').innerHTML = tableOfContents
-
-
+    if (typeof window !== 'undefined') {
+      document.querySelector('.toc-wrapper').innerHTML = tableOfContents
+    }
 
     // Scrollspy Elements (Nav Items)
     const ssElems = document.querySelectorAll('.scrollspy');
