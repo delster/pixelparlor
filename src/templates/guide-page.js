@@ -11,13 +11,13 @@ export class GuidePageTemplate extends Component {
     // Scrollspy Elements (Nav Items)
     const ssElems = document.querySelectorAll('.scrollspy');
     const ssOptions = {};
-    const ssInstances = M.ScrollSpy.init(ssElems, ssOptions);
+    M.ScrollSpy.init(ssElems, ssOptions);
 
     // Pushpin/sticky Element (Table of Contents)
     const ppElem = document.querySelector('.toc-nav');
     const top = ppElem.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
     const ppOptions = { top: top };
-    const ppInstance = M.Pushpin.init(ppElem, ppOptions);
+     M.Pushpin.init(ppElem, ppOptions);
   }
 
   render() {
