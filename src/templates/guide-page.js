@@ -49,7 +49,7 @@ export class GuidePageTemplate extends Component {
     }); // headings.forEach()
     tableOfContents = `${tableOfContents}</ul>`
 
-    if(document.querySelector('.toc-wrapper').length) {
+    if( document.querySelector('.toc-wrapper') !== null ) {
       document.querySelector('.toc-wrapper').innerHTML = tableOfContents
     }
 
