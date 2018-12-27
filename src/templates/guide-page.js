@@ -9,7 +9,7 @@ import M from 'materialize-css'
 export class GuidePageTemplate extends Component {
   componentDidMount() {
     // If we're not in the NetlifyCMS Editor
-    if(!document.querySelector("#nc-root")) {
+    if(!document.querySelector("#nc-root").length) {
       const headings = document.querySelectorAll('.content h2,.content h3')
 
       let tableOfContents = `<ul class="toc-nav">`
