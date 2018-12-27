@@ -67,16 +67,18 @@ export class GuidePageTemplate extends Component {
   render() {
     const { title, content, contentComponent } = this.props
     const PageContent = contentComponent || Content
-    const hasTOC = (document.querySelector('.toc-wrapper') !== null);
+    const hasTOC = (document.querySelector('.toc-wrapper') !== null)
 
-    let tocCols = `
-      <div className="col s12">`;
+    let tocClass = ``
+    let contentClass = ``
+
+    // Editor fix
     if(hasTOC) {
-      tocCols = `
-        <div className="col s12 m4 l3">
-          <div className="toc-wrapper" />
-        </div>
-        <div className="col s12 m8 l9">`;
+      tocClass = `col s12 m4 l3`
+      contentClass = `col s12 m8 l9`
+    } else {
+      tocClass = `hide`
+      contentClass = `col s12`
     }
 
     return (
@@ -90,7 +92,10 @@ export class GuidePageTemplate extends Component {
         <section className="section--content">
           <div className="container">
             <div className="row">
-              {tocCols}
+              <div className={tocClass}>
+                <div className="toc-wrapper" />
+              </div>
+              <div className={contentClass}>
                 <PageContent className="content" content={content} />
               </div>
             </div>
