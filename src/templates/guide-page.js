@@ -67,7 +67,7 @@ export class GuidePageTemplate extends Component {
   render() {
     const { title, content, contentComponent } = this.props
     const PageContent = contentComponent || Content
-    const hasTOC = (document.querySelector('.toc-wrapper') !== null)
+    const hasTOC = ((typeof document !== `undefined`)&&(document.querySelector('.toc-wrapper') !== null))
 
     let tocClass = ``
     let contentClass = ``
