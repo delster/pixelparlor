@@ -8,28 +8,12 @@ import M from 'materialize-css'
 
 export class GuidePageTemplate extends Component {
   componentDidMount() {
-    // Scrollspy Elements (Nav Items)
-    const ssElems = document.querySelectorAll('.scrollspy');
-    const ssOptions = {};
-    M.ScrollSpy.init(ssElems, ssOptions);
 
-    // Pushpin/sticky Element (Table of Contents)
-    const ppElem = document.querySelector('.toc-nav');
-    const top = ppElem.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
-    const ppOptions = { top: top };
-     M.Pushpin.init(ppElem, ppOptions);
-  }
-
-  render() {
-    const { title, content, contentComponent } = this.props
-    const PageContent = contentComponent || Content
-    const parser = new DOMParser()
-    const parsedContent = parser.parseFromString(content, "text/html")
-    const headings = parsedContent.querySelectorAll('h2,h3')
+    const headings = document.querySelectorAll('.content h2,.content h3')
 
     let tableOfContents = `<ul class="toc-nav">`
     let isNested = false;
-    headings.forEach((e,_) => {
+    headings.forEach((e, _) => {
       // Mutate headings: add slugify'd IDs and 'scrollspy' class.
       e.id = slugify(e.textContent);
       e.classList.add('scrollspy');
@@ -39,7 +23,7 @@ export class GuidePageTemplate extends Component {
       let tocItem = `<a href="#${slugify(e.textContent)}">${e.textContent}</a>`
 
       // If not nested:
-      if( isNested ) {
+      if (isNested) {
         // isNested
         if (e.tagName === 'H2') {
           // Nested H2
@@ -65,8 +49,25 @@ export class GuidePageTemplate extends Component {
     }); // headings.forEach()
     tableOfContents = `${tableOfContents}</ul>`
 
-    const s = new XMLSerializer();
-    const finalContent = s.serializeToString(parsedContent);
+    document.querySelector('.toc-wrapper').innerHTML = tableOfContents
+
+
+
+    // Scrollspy Elements (Nav Items)
+    const ssElems = document.querySelectorAll('.scrollspy');
+    const ssOptions = {};
+    M.ScrollSpy.init(ssElems, ssOptions);
+
+    // Pushpin/sticky Element (Table of Contents)
+    const ppElem = document.querySelector('.toc-nav');
+    const top = ppElem.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop);
+    const ppOptions = { top: top };
+     M.Pushpin.init(ppElem, ppOptions);
+  }
+
+  render() {
+    const { title, content, contentComponent } = this.props
+    const PageContent = contentComponent || Content
 
     return (
       <main id="main-content" className="main-content">
@@ -80,10 +81,10 @@ export class GuidePageTemplate extends Component {
           <div className="container">
             <div className="row">
               <div className="col s12 m4 l3">
-                <div dangerouslySetInnerHTML={{ __html: tableOfContents}} />
+                <div className="toc-wrapper" />
               </div>
               <div className="col s12 m8 l9">
-                <PageContent className="content" content={finalContent} />
+                <PageContent className="content" content={content} />
               </div>
             </div>
           </div>
