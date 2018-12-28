@@ -30,8 +30,7 @@
     "react-helmet": "^5.2.0",
     "react-slugify": "^1.1.1",
     "uuid": "^3.2.1",
-    "webfontloader": "^1.6.28",
-    "xmldom": "^0.1.27"
+    "webfontloader": "^1.6.28"
   },
   "keywords": [
     "gatsby"
