@@ -2,7 +2,11 @@
   "name": "pxp-guides-microsite",
   "description": "A site for client docs built with GatsbyJS and Netlify CMS.",
   "version": "v1.0.0",
-  "author": "David Elster at Pixel Parlor",
+  "author": "David Elster",
+  "contributors": [
+    "David Elster <davidandtheweb@gmail.com> (https://github.com/delster/)",
+    "Pixel Parlor <dev@pixelparlor.com> (https://pixelparlor.com/)"
+  ],
   "homepage": "https://github.com/delster/pixelparlor#readme",
   "dependencies": {
     "gatsby": "^2.0.66",
