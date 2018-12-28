@@ -4,7 +4,7 @@ import { StaticQuery, graphql } from "gatsby"
 import 'materialize-css/dist/css/materialize.min.css'
 
 import Navbar from '../components/Navbar'
-import './all.sass'
+import './main.scss'
 
 // Only run WebFont.load in the browser.
 if (typeof window !== 'undefined') {

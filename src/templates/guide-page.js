@@ -71,10 +71,10 @@ export class GuidePageTemplate extends React.Component {
     // MaterializeCSS Component Init:
     this.mdInt = setInterval( () => {
       // Check if the Table of Content has loaded.
-      let ppElem = document.querySelector('.toc-nav')
+      let ppElems = document.querySelectorAll('.toc-nav')
 
       // If Table of Contents exist:
-      if(ppElem!==null) {
+      if(ppElems!==null) {
         // Scrollspy Elements (Nav Items)
         const ssElems = document.querySelectorAll('.content h2, .content h3')
         // Scrollspy Options
@@ -83,9 +83,8 @@ export class GuidePageTemplate extends React.Component {
         M.ScrollSpy.init(ssElems, ssOptions)
 
         // Pushpin/sticky Element (Table of Contents)
-        let ppTop = ppElem.getBoundingClientRect().top + (window.pageYOffset || document.documentElement.scrollTop)
-        let ppOptions = { top: ppTop }
-        M.Pushpin.init(ppElem, ppOptions)
+        let ppOptions = { top: ppElems[0].getBoundingClientRect().top }
+        M.Pushpin.init(ppElems, ppOptions)
 
         // Things fired, let this go.
         clearInterval(this.mdInt);

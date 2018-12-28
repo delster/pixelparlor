@@ -1,0 +1,107 @@
+/* Variables
+  ************************************/
+$primary-color: #008ef3;
+
+/* Global Typography
+  ************************************/
+// Default
+html, body, * {
+  color: #99a4ae;
+  font-family: 'Montserrat',Helvetic,Arial,Lucida,sans-serif;
+  font-weight: 400
+}
+
+h1 {
+  color: white;
+  font-size: 60px;
+  line-height: 1.4;
+  margin-bottom: 0;
+  text-align: center;
+}
+h2 {
+  font-size: 50px;
+  line-height: 53px;
+  padding-bottom: 1.4rem;
+  border-bottom: solid #d1d2d4 1px;
+}
+h3 {
+  font-size: 32px;
+  line-height: 36px;
+}
+h4 {
+  color: #242424;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+}
+h5 {
+  font-size: 60px;
+  line-height: 1.4;
+}
+h6 {
+  font-size: 60px;
+  line-height: 1.4;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+  font-weight: 700;
+}
+
+h2,h3,h5,h6 {
+  color: $primary-color;
+}
+
+/* Global Layout
+  ************************************/
+.section {
+  padding-top: 4rem;
+  padding-bottom: 6rem;
+}
+
+/* Main Header
+  ************************************/
+#main-navigation {
+  background-color: $primary-color;
+}
+
+/* Guide Page: Hero Section
+  ************************************/
+
+.toc-nav {
+  background: #f3faff;
+  padding: 2em 3em 2em 1em !important;
+  width: fit-content;
+}
+.toc-nav.pinned {
+    position: fixed;
+}
+.toc-nav li li {
+    margin-left: 1em;
+}
+.toc-nav a {
+    color: #99a4ae;
+    font-size: 13px;
+    line-height: 22px;
+}
+.toc-nav a.active {
+      color: #008ef3;
+}
+.toc-nav a.active::before {
+  display: inline-block;
+  content: '';
+  height: .8em;
+  width: .8em;
+  margin-right: .5em;
+  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJJc29sYXRpb25fTW9kZSIgZGF0YS1uYW1lPSJJc29sYXRpb24gTW9kZSIgdmlld0JveD0iMCAwIDI5LjMxIDI5LjU1Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzAwOGVmMzt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPnBwLWRvY3MtbG9nbzwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB4PSIxNC41MSIgd2lkdGg9IjE0LjgiIGhlaWdodD0iMTQuOCIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMxMywxOTIuMmgxNC41MlYyMDdIMzEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMxMi45NSAtMTc3LjQxKSIvPjwvc3ZnPg==);
+}
+/* Guide Page: Hero Section
+  ************************************/
+.section--hero {
+  background-color: $primary-color;
+}
+.section--hero .hero-byline {
+  color: white;
+  font-size: 22px;
+  text-align: center;
+}
