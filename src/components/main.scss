@@ -2,6 +2,17 @@
   ************************************/
 $primary-color: #008ef3;
 
+/* 100vh min on Gatsby app
+  ************************************/
+#___gatsby>div>div {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+#___gatsby>div>div>section {
+  flex: 1 1 100%;
+}
+
 /* Global Typography
   ************************************/
 // Default
@@ -14,24 +25,11 @@ body,
   font-weight: 400;
 }
 
-p {
-  padding-bottom: 1rem
-}
+p { padding-bottom: 1rem }
+em { font-style: italic }
+strong { font-weight: 700 }
 
-em {
-  font-style: italic
-}
-
-strong {
-  font-weight: 700
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4 {
   font-weight: 700;
 }
 
@@ -44,6 +42,7 @@ h1 {
 }
 
 h2 {
+  color: $primary-color;
   font-size: 50px;
   line-height: 53px;
   padding-bottom: 1.4rem;
@@ -51,6 +50,7 @@ h2 {
 }
 
 h3 {
+  color: $primary-color;
   font-size: 32px;
   line-height: 36px;
 }
@@ -63,22 +63,9 @@ h4 {
 }
 
 h5 {
-  color: inherit;
   font-weight: 300;
   font-size: 20px;
   line-height: 29px;
-}
-
-h6 {
-  font-size: 60px;
-  line-height: 1.4;
-}
-
-h2,
-h3,
-h5,
-h6 {
-  color: $primary-color;
 }
 
 /* Global Layout
@@ -89,7 +76,7 @@ h6 {
 }
 
 .container {
-  width: 100%;
+  width: 95%;
 }
 
 img {
@@ -106,6 +93,11 @@ img {
   ************************************/
 #main-navigation {
   background-color: $primary-color;
+  z-index: 1;
+}
+#main-content {
+  /* For no-shadow nav */
+  z-index: 2;
 }
 
 /* Guide Page: Hero Section
@@ -114,43 +106,43 @@ img {
   background: #f3faff;
   padding: 2em 3em 2em 1em !important;
   width: fit-content;
-}
 
-.toc-nav.pinned {
-  position: fixed;
-}
+  &.pinned {
+    position: fixed;
+  }
 
-.toc-nav li li {
-  margin-left: 1em;
-}
+  li li {
+    margin-left: 1em;
+  }
 
-.toc-nav a {
-  color: #99a4ae;
-  font-size: 13px;
-  line-height: 22px;
-}
+  a {
+    color: #99a4ae;
+    font-size: 13px;
+    line-height: 22px;
 
-.toc-nav a.active {
-  color: #008ef3;
-}
+    &.active {
+      color: #008ef3;
+    }
 
-.toc-nav a.active::before {
-  display: inline-block;
-  content: "";
-  height: 0.8em;
-  width: 0.8em;
-  margin-right: 0.5em;
-  background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJJc29sYXRpb25fTW9kZSIgZGF0YS1uYW1lPSJJc29sYXRpb24gTW9kZSIgdmlld0JveD0iMCAwIDI5LjMxIDI5LjU1Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzAwOGVmMzt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPnBwLWRvY3MtbG9nbzwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB4PSIxNC41MSIgd2lkdGg9IjE0LjgiIGhlaWdodD0iMTQuOCIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMxMywxOTIuMmgxNC41MlYyMDdIMzEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMxMi45NSAtMTc3LjQxKSIvPjwvc3ZnPg==);
+    &.active::before {
+      display: inline-block;
+      content: "";
+      height: 0.8em;
+      width: 0.8em;
+      margin-right: 0.5em;
+      background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGlkPSJJc29sYXRpb25fTW9kZSIgZGF0YS1uYW1lPSJJc29sYXRpb24gTW9kZSIgdmlld0JveD0iMCAwIDI5LjMxIDI5LjU1Ij48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6IzAwOGVmMzt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPnBwLWRvY3MtbG9nbzwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB4PSIxNC41MSIgd2lkdGg9IjE0LjgiIGhlaWdodD0iMTQuOCIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTMxMywxOTIuMmgxNC41MlYyMDdIMzEzWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTMxMi45NSAtMTc3LjQxKSIvPjwvc3ZnPg==);
+    }
+  }
 }
 
 /* Guide Page: Hero Section
   ************************************/
 .section--hero {
   background-color: $primary-color;
-}
 
-.section--hero .hero-byline {
-  color: white;
-  font-size: 22px;
-  text-align: center;
+  .hero-byline {
+    color: white;
+    font-size: 22px;
+    text-align: center;
+  }
 }
