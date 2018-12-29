@@ -103,8 +103,8 @@ export class GuidePageTemplate extends React.Component {
     let tocClass = ``
     let contentClass = ``
     if (this.state.tableofcontents !== null) {
-      tocClass = `col s12 m4 l3`
-      contentClass = `col s12 m8 l9`
+      tocClass = `col hide-on-med-and-down l3`
+      contentClass = `col s12 l9`
     } else {
       tocClass = `hide`
       contentClass = `col s12`
